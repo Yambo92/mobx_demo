@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {configure} from 'mobx';
+import { ShoppingCart } from './stores/shopping-cart'
+import { Provider } from 'mobx-react'
+configure({enforceActions: 'always'})
+
+
+const shoppingCart = new ShoppingCart();
+
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={shoppingCart} >
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
